@@ -3,7 +3,7 @@ import numpy as np
 import serial
 import time
 
-t = np.arange(0,10,0.1) # time vector; create Fs samples between -0.5 and 10 sec.
+t = np.arange(0,10,0.1) # time vector;
 y1k = np.arange(0,10,0.1)
 y2k = np.arange(0,10,0.1)
 y3k = np.arange(0,10,0.1)
@@ -32,6 +32,6 @@ ax[0].set_xlabel('Time')
 ax[0].set_ylabel('Acc Vector')
 ax[1].stem(t,y4k,use_line_collection=True) # plotting the spectrum
 ax[1].set_xlabel('Time')
-ax[1].set_ylabel('Tilt')
+ax[1].set_ylabel('Horizontal')
 plt.show()
 s.close()
