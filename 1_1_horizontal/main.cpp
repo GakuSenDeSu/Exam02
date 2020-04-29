@@ -60,7 +60,7 @@ void rotate_info() {
         t[2] = ((float)acc16) / 4096.0f;
         //Calculate horizontal distance
         float t1 = timer_log.read();
-        float D = (float)sqrt((t[0]*9.8*(t1^2))^2 + (t[1]*9.8*(t1^2))^2 + (t[2]*9.8*(t1^2))^2);
+        float D = (float)sqrt((t[0]*9.8*(t1*t1))*(t[0]*9.8*(t1*t1)) + (t[1]*9.8*(t1*t1))*(t[1]*9.8*(t1*t1)) + (t[2]*9.8*(t1*t1))*(t[2]*9.8*(t1*t1)));
         //Calculate degree change
         float R = (float)sqrt((t[0]*t[0]) + (t[1]*t[1]) + (t[2]*t[2]));
         d[0] = abs(acos(t[0]/R));
@@ -69,7 +69,7 @@ void rotate_info() {
         //If degree seems horizontal movement, than we will add up all displacements to see if accumulated displacement is larger than 5cm
         if ((abs(d[0]-1.5930)>=0.09) && (abs(d[1]-1.5875)>=0.09) && (abs(d[2]-0.2946)>=0.09)){
             //XYZ axis acceleeter direction should be 0( here i set up 0.09 radian for error)
-            float D1 += D;
+            float D1 = D1+D;
             if (D1 >= 5){
             printf("%1.4f %1.4f %1.4f %d\r\n", t[0], t[1], t[2],1);   
             }
